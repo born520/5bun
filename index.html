@@ -3,105 +3,116 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    
-    <meta property="og:title" content="양산시 달빛어린이병원 지정을 위한 제언">
-    <meta property="og:description" content="양산시의회 송은영 의원 5분 자유 발언 - 달빛어린이병원 지정 촉구">
-    <meta property="og:image" content="thumbnail.jpg"> 
-    <meta property="og:type" content="website">
-
-    <title>양산시 달빛어린이병원 지정을 위한 제언</title>
     <style>
-        body {
+        /* 기본 스타일 초기화 */
+        * {
             margin: 0;
             padding: 0;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            min-height: 100vh;
-            background-color: #000;
+            box-sizing: border-box;
         }
 
-        /* 9:16 비율의 쇼츠 컨테이너 */
-        .video-container {
+        body {
+            font-family: 'Pretendard', -apple-system, BlinkMacSystemFont, system-ui, Roboto, sans-serif;
+            background-color: #f4f4f4;
+            padding: 20px;
+        }
+
+        /* 갤러리 그리드 설정 */
+        .video-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+            gap: 20px;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        /* 개별 비디오 카드 */
+        .video-card {
             position: relative;
             width: 100%;
-            max-width: 450px; 
-            aspect-ratio: 9 / 16;
-            background-color: #1a1a1a;
+            aspect-ratio: 16 / 9; /* 영상 표준 비율 */
+            background-color: #000;
+            border-radius: 12px;
             overflow: hidden;
-        }
-
-        /* 유튜브 iframe */
-        .video-container iframe {
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            border: none;
-        }
-
-        /* 유튜브 원본 썸네일 덮개 */
-        .thumbnail-overlay {
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            /* 유튜브 고화질 썸네일 주소 (ID: vuusdvx431I) */
-            background-image: url('https://img.youtube.com/vi/vuusdvx431I/maxresdefault.jpg');
-            background-size: cover;
-            background-position: center;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
             cursor: pointer;
-            z-index: 10;
-            display: flex;
-            justify-content: center;
-            align-items: center;
+            transition: transform 0.3s ease;
         }
 
-        /* 재생 버튼 */
-        .play-button {
-            width: 70px;
-            height: 70px;
-            background: rgba(255, 0, 0, 0.9);
-            border-radius: 50%;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            box-shadow: 0 0 20px rgba(0,0,0,0.3);
+        .video-card:hover {
+            transform: translateY(-5px);
         }
-        .play-button::after {
-            content: '';
-            border-style: solid;
-            border-width: 12px 0 12px 20px;
-            border-color: transparent transparent transparent white;
-            margin-left: 5px;
+
+        /* 썸네일 이미지 */
+        .thumbnail {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            display: block;
+        }
+
+        /* 오버레이 레이어 (그라데이션 포함) */
+        .overlay {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            padding: 40px 15px 15px; /* 상단 패딩을 크게 주어 그라데이션 확보 */
+            background: linear-gradient(to top, rgba(0, 0, 0, 0.9) 0%, rgba(0, 0, 0, 0.5) 60%, transparent 100%);
+            color: #fff;
+            pointer-events: none; /* 클릭 시 이미지가 선택되도록 함 */
+        }
+
+        /* 영상 제목 스타일 */
+        .video-title {
+            font-size: 16px;
+            font-weight: 600;
+            line-height: 1.4;
+            text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.5);
+            
+            /* 말줄임표 설정 (두 줄 노출) */
+            display: -webkit-box;
+            -webkit-line-clamp: 2;
+            -webkit-box-orient: vertical;
+            overflow: hidden;
+            text-overflow: ellipsis;
+        }
+
+        /* 모바일 최적화: 화면이 작아지면 글자 크기 조정 */
+        @media (max-width: 480px) {
+            .video-title {
+                font-size: 14px;
+            }
+            .video-grid {
+                grid-template-columns: 1fr; /* 모바일은 한 줄로 */
+            }
         }
     </style>
 </head>
 <body>
 
-    <div class="video-container">
-        <div id="thumbnail" class="thumbnail-overlay" onclick="playVideo()">
-            <div class="play-button"></div>
+    <div class="video-grid">
+        <div class="video-card">
+            <img src="https://images.unsplash.com/photo-1611162617474-5b21e879e113?auto=format&fit=crop&w=800&q=80" alt="Thumbnail" class="thumbnail">
+            <div class="overlay">
+                <div class="video-title">첫 번째 영상의 제목입니다. 제목이 길어지면 자동으로 두 줄까지 표시되고 나머지는 생략됩니다.</div>
+            </div>
         </div>
 
-        <div id="player"></div>
+        <div class="video-card">
+            <img src="https://images.unsplash.com/photo-1498050108023-c5249f4df085?auto=format&fit=crop&w=800&q=80" alt="Thumbnail" class="thumbnail">
+            <div class="overlay">
+                <div class="video-title">코딩 강의: 웹 디자인의 기초부터 심화까지 완벽 가이드</div>
+            </div>
+        </div>
+
+        <div class="video-card">
+            <img src="https://images.unsplash.com/photo-1492691527719-9d1e07e534b4?auto=format&fit=crop&w=800&q=80" alt="Thumbnail" class="thumbnail">
+            <div class="overlay">
+                <div class="video-title">브이로그 - 주말에 떠나는 조용한 카페 투어와 힐링 타임</div>
+            </div>
+        </div>
     </div>
 
-    <script>
-        function playVideo() {
-            document.getElementById('thumbnail').style.display = 'none';
-            const playerDiv = document.getElementById('player');
-            // 쇼츠 느낌을 위해 autoplay와 동시에 음소거(mute=1)를 권장하지만, 
-            // 클릭 후 재생이므로 소리가 나오도록 기본 설정했습니다.
-            playerDiv.innerHTML = `
-                <iframe 
-                    src="https://www.youtube.com/embed/vuusdvx431I?autoplay=1&rel=0" 
-                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
-                    allowfullscreen>
-                </iframe>`;
-        }
-    </script>
 </body>
 </html>
