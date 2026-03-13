@@ -6,7 +6,7 @@
     
     <meta property="og:title" content="양산시 달빛어린이병원 지정을 위한 제언">
     <meta property="og:description" content="양산시의회 송은영 의원 5분 자유 발언 - 달빛어린이병원 지정 촉구">
-    <meta property="og:image" content="https://img.youtube.com/vi/vuusdvx431I/maxresdefault.jpg"> 
+    <meta property="og:image" content="https://raw.githubusercontent.com/[깃허브_ID]/[저장소명]/[브랜치명]/thumbnail.jpg"> 
     <meta property="og:type" content="website">
 
     <title>양산시 달빛어린이병원 지정을 위한 제언</title>
@@ -22,7 +22,6 @@
             font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
         }
 
-        /* 9:16 비율의 쇼츠 컨테이너 */
         .video-container {
             position: relative;
             width: 100%;
@@ -30,10 +29,8 @@
             aspect-ratio: 9 / 16;
             background-color: #1a1a1a;
             overflow: hidden;
-            box-shadow: 0 10px 30px rgba(0,0,0,0.5);
         }
 
-        /* 유튜브 iframe */
         .video-container iframe {
             position: absolute;
             top: 0;
@@ -43,7 +40,7 @@
             border: none;
         }
 
-        /* 유튜브 원본 썸네일 덮개 */
+        /* 2. 재생 전 썸네일: 유튜브 원본 썸네일 유지 */
         .thumbnail-overlay {
             position: absolute;
             top: 0;
@@ -61,28 +58,27 @@
             align-items: center;
         }
 
-        /* 제목 오버레이 레이어 (하단 그라데이션) */
+        /* 3. 제목 오버레이: 썸네일 위에 텍스트 배치 */
         .title-overlay {
             position: absolute;
             bottom: 0;
             left: 0;
             right: 0;
-            padding: 60px 20px 30px; /* 위쪽 패딩을 넉넉히 주어 그라데이션 확보 */
-            background: linear-gradient(to top, rgba(0, 0, 0, 0.9) 0%, rgba(0, 0, 0, 0.5) 60%, transparent 100%);
+            padding: 60px 20px 40px;
+            background: linear-gradient(to top, rgba(0, 0, 0, 0.9) 0%, rgba(0, 0, 0, 0.4) 60%, transparent 100%);
             color: white;
             text-align: center;
-            pointer-events: none; /* 클릭이 썸네일로 전달되도록 함 */
+            pointer-events: none;
         }
 
         .video-title {
             font-size: 20px;
             font-weight: bold;
             line-height: 1.4;
-            word-break: keep-all; /* 단어 단위 줄바꿈으로 가독성 향상 */
-            text-shadow: 0 2px 4px rgba(0,0,0,0.5);
+            word-break: keep-all;
+            text-shadow: 0 2px 4px rgba(0,0,0,0.7);
         }
 
-        /* 재생 버튼 */
         .play-button {
             width: 80px;
             height: 80px;
@@ -92,12 +88,7 @@
             justify-content: center;
             align-items: center;
             box-shadow: 0 0 20px rgba(0,0,0,0.4);
-            transition: transform 0.2s ease;
             z-index: 11;
-        }
-
-        .thumbnail-overlay:hover .play-button {
-            transform: scale(1.1);
         }
 
         .play-button::after {
@@ -125,10 +116,8 @@
 
     <script>
         function playVideo() {
-            // 썸네일 덮개(제목 포함)를 숨김
             document.getElementById('thumbnail').style.display = 'none';
             const playerDiv = document.getElementById('player');
-            
             playerDiv.innerHTML = `
                 <iframe 
                     src="https://www.youtube.com/embed/vuusdvx431I?autoplay=1&rel=0" 
